@@ -1,10 +1,12 @@
 const express = require('express');
-const app = express();
+const Server = express();
+const {router} = require('./routes');
 
-require('./database');
+require('./config/database');
 
-app.use(require('../routes/indexRoutes'));
+Server.use("/api",router);
 
-app.listen(3000, () => {
+
+Server.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

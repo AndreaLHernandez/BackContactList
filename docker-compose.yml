@@ -11,6 +11,8 @@ services:
       - mongo
     volumes:
       - .:/usr/src/app
+    environment:
+      - MONGO_DB=mongodb://mongo/contacts-app
   
   mongo:
     container_name: mongodb
