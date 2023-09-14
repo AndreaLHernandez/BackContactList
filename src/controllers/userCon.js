@@ -3,6 +3,7 @@ const models = require('../models');
 
 const getUsers = async (req, res) => {
     const getAllUsers = await models.User.find();
+    console.log("Get users");
     return res.status(200).send(
         getAllUsers,
     );
