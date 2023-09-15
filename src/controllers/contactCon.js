@@ -4,6 +4,17 @@ const models = require('../models');
 const getContacts = async (req, res) => {
     try {
       //Añadir chequeo de usuario  
+      const {id} = req.query;
+      if(!id) return res.status(405).send({
+        success: false,
+        message: "User required",
+      });
+      const user = await models.User.findById(id);
+        if(!user) return res.status(405).send({
+            success: false,
+            message: "Unauthorized user",
+        });
+
       const getAllContacts = await models.Contact.find();
       return res.status(200).send({
         success: true,
@@ -17,6 +28,7 @@ const getContacts = async (req, res) => {
         });
     }
 };
+
 
 const addContact = async (req, res) => {
     try {
