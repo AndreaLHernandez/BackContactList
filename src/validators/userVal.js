@@ -1,5 +1,5 @@
 const {check, validationResult} = require ('express-validator'); 
-
+const {validateResult} = require("../helpers/validators");
 
 const validCreateUser = [
     check('name')
@@ -14,7 +14,9 @@ const validCreateUser = [
         .isLength({min: 6})
         .withMessage('Password must be at least 6 characters long'), 
     
-    
+        (req, res, next) => {
+            validateResult(req, res, next);
+          },
 ];
 
 module.exports = validCreateUser;

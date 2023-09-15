@@ -1,4 +1,5 @@
 const {check} = require ('express-validator');
+const {validateResult} = require("../helpers/validators");
 const validContact = [
     check('name')
         .notEmpty()
@@ -19,6 +20,10 @@ const validContact = [
     check('email')
         .isEmail()
         .withMessage('Email must be a valid email address'),
+
+        (req, res, next) => {
+            validateResult(req, res, next);
+          },
 ];
 
 module.exports = validContact;

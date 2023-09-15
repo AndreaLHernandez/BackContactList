@@ -12,7 +12,8 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - MONGO_DB=mongodb://mongo/contacts-app
+      - MONGO_DB= mongodb://mongo/contacts-app
+      - PORT= 3000
   
   mongo:
     container_name: mongodb
