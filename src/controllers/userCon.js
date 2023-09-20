@@ -5,7 +5,7 @@ const getUsers = async (req, res) => {
     const getAllUsers = await models.User.find();
     return res.status(200).send({
         success: true,
-        message: "Users found",
+        message: "Unauthorized user",
         users: getAllUsers,
     });
 };

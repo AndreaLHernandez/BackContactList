@@ -9,7 +9,7 @@ const getContacts = async (req, res) => {
         if(!user){
             return res.status(400).send({
                 success: false,
-                message: "User not found",
+                message: "Unauthorized user",
             });
         }else{
             const getAllContacts = await models.Contact.find(
